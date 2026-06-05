@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Chord Sheets</title>
+<style>@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&family=Playfair+Display:wght@700&display=swap');
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#e8e4dc;font-family:'Roboto Mono',monospace;padding:24px;min-height:100vh}
+.container{max-width:600px;margin:0 auto}
+h1{font-family:'Playfair Display',serif;font-size:2em;color:#1a1a1a;margin-bottom:4px}
+.subtitle{font-size:.68em;letter-spacing:.12em;text-transform:uppercase;color:#888;margin-bottom:28px}
+.song-list{display:flex;flex-direction:column;gap:10px}
+.song-card{background:#fffdf8;border-radius:4px;box-shadow:0 1px 6px rgba(0,0,0,.08);padding:14px 18px;text-decoration:none;color:inherit;display:flex;justify-content:space-between;align-items:center;transition:box-shadow .15s,transform .15s}
+.song-card:hover{box-shadow:0 3px 14px rgba(0,0,0,.14);transform:translateY(-1px)}
+.song-info .title{font-family:'Playfair Display',serif;font-size:1.05em;color:#1a1a1a;line-height:1.2}
+.song-info .artist{font-size:.64em;letter-spacing:.1em;text-transform:uppercase;color:#888;margin-top:3px}
+.song-meta{display:flex;gap:8px;align-items:center;flex-shrink:0;margin-left:16px}
+.tag{font-size:.62em;letter-spacing:.08em;text-transform:uppercase;color:#888;background:#f0ede6;border-radius:3px;padding:2px 7px}
+.tag.key{color:#b5451b;background:#faf0eb}
+</style></head>
+<body>
+<div class="container">
+  <h1>Chord Sheets</h1>
+  <div class="subtitle">Ukulele arrangements</div>
+  <div class="song-list">
+
+    <a class="song-card" href="ukulele/somewhere-over-the-rainbow.html">
+      <div class="song-info">
+        <div class="title">Over the Rainbow</div>
+        <div class="artist">Israel Kamakawiwoʻole</div>
+      </div>
+      <div class="song-meta">
+        <span class="tag key">C</span>
+        <span class="tag">Ukulele</span>
+      </div>
+    </a>
+
+    <a class="song-card" href="rainbow.html">
+      <div class="song-info">
+        <div class="title">Somewhere Over the Rainbow</div>
+        <div class="artist">Israel Kamakawiwoʻole</div>
+      </div>
+      <div class="song-meta">
+        <span class="tag key">C</span>
+        <span class="tag">Ukulele</span>
+      </div>
+    </a>
+
+  </div>
+</div>
+</body></html>
