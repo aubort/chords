@@ -14,6 +14,14 @@ h1{font-family:'Playfair Display',serif;font-size:2em;color:#1a1a1a;margin-botto
 .song-meta{display:flex;gap:8px;align-items:center;flex-shrink:0;margin-left:16px}
 .tag{font-size:.62em;letter-spacing:.08em;text-transform:uppercase;color:#888;background:#f0ede6;border-radius:3px;padding:2px 7px}
 .tag.key{color:#b5451b;background:#faf0eb}
+.edit-btn{
+  font-family:'Roboto Mono',monospace;font-size:.6em;letter-spacing:.1em;text-transform:uppercase;
+  background:transparent;border:1px solid #ddd;border-radius:3px;
+  color:#aaa;padding:3px 9px;cursor:pointer;text-decoration:none;
+  transition:border-color .15s,color .15s;white-space:nowrap;
+  display:inline-flex;align-items:center;
+}
+.edit-btn:hover{border-color:#b5451b;color:#b5451b}
 </style></head>
 <body>
 <div class="container">
@@ -21,27 +29,37 @@ h1{font-family:'Playfair Display',serif;font-size:2em;color:#1a1a1a;margin-botto
   <div class="subtitle">Ukulele arrangements</div>
   <div class="song-list">
 
-    <a class="song-card" href="ukulele/somewhere-over-the-rainbow.html">
-      <div class="song-info">
-        <div class="title">Over the Rainbow</div>
-        <div class="artist">Israel Kamakawiwoʻole</div>
+    <div class="song-card">
+      <a href="ukulele/somewhere-over-the-rainbow.html" style="text-decoration:none;color:inherit;flex:1;display:flex;align-items:center;justify-content:space-between">
+        <div class="song-info">
+          <div class="title">Over the Rainbow</div>
+          <div class="artist">Israel Kamakawiwoʻole</div>
+        </div>
+        <div class="song-meta">
+          <span class="tag key">C</span>
+          <span class="tag">Ukulele</span>
+        </div>
+      </a>
+      <div style="margin-left:14px;flex-shrink:0">
+        <a class="edit-btn" href="editor.html?url=https://raw.githubusercontent.com/aubort/chords/main/ukulele/somewhere-over-the-rainbow.html">Edit</a>
       </div>
-      <div class="song-meta">
-        <span class="tag key">C</span>
-        <span class="tag">Ukulele</span>
-      </div>
-    </a>
+    </div>
 
-    <a class="song-card" href="rainbow.html">
-      <div class="song-info">
-        <div class="title">Somewhere Over the Rainbow</div>
-        <div class="artist">Israel Kamakawiwoʻole</div>
+    <div class="song-card">
+      <a href="rainbow.html" style="text-decoration:none;color:inherit;flex:1;display:flex;align-items:center;justify-content:space-between">
+        <div class="song-info">
+          <div class="title">Somewhere Over the Rainbow</div>
+          <div class="artist">Israel Kamakawiwoʻole</div>
+        </div>
+        <div class="song-meta">
+          <span class="tag key">C</span>
+          <span class="tag">Ukulele</span>
+        </div>
+      </a>
+      <div style="margin-left:14px;flex-shrink:0">
+        <a class="edit-btn" href="editor.html?url=https://raw.githubusercontent.com/aubort/chords/main/rainbow.html">Edit</a>
       </div>
-      <div class="song-meta">
-        <span class="tag key">C</span>
-        <span class="tag">Ukulele</span>
-      </div>
-    </a>
+    </div>
 
   </div>
 </div>

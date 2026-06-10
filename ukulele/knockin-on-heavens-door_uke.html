@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Knockin' On Heaven's Door – Ukulele</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&family=Playfair+Display:wght@700&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  :root { --fs: 14px; }
+
+  body { background: #e8e4dc; font-family: 'Roboto Mono', monospace; padding: 12px 12px 60px; }
+
+  /* ── TOOLBAR ── */
+  .toolbar { width: 210mm; margin: 0 auto 8px; display: flex; align-items: center; justify-content: space-between; gap: 8px; flex-wrap: wrap; }
+  .toolbar a { font-size: .68em; letter-spacing: .1em; text-transform: uppercase; color: #888; text-decoration: none; }
+  .toolbar a:hover { color: #1a1a1a; }
+  .toolbar-right { display: flex; align-items: center; gap: 6px; }
+  .pill { display: inline-flex; align-items: center; gap: 5px; font-family: 'Roboto Mono', monospace; font-size: .65em; letter-spacing: .06em; text-transform: uppercase; border-radius: 20px; padding: 4px 11px; text-decoration: none; border: 1px solid transparent; transition: opacity .15s; }
+  .pill:hover { opacity: .75; }
+  .pill-spotify { background: #1DB954; color: #fff; }
+  .pill-yt      { background: #FF0000; color: #fff; }
+  .font-controls { display: flex; align-items: center; gap: 2px; background: #fffdf8; border: 1px solid #ddd; border-radius: 4px; overflow: hidden; }
+  .font-controls span { font-size: .7em; color: #888; padding: 4px 8px; border-right: 1px solid #eee; user-select: none; }
+  .fc-btn { background: none; border: none; cursor: pointer; font-family: 'Roboto Mono', monospace; font-size: .75em; color: #555; padding: 4px 8px; line-height: 1; border-left: 1px solid #eee; }
+  .fc-btn:hover { background: #f5f2ee; color: #1a1a1a; }
+  .fit-btn { font-family: 'Roboto Mono', monospace; font-size: .65em; letter-spacing: .06em; text-transform: uppercase; background: #fffdf8; border: 1px solid #ddd; border-radius: 4px; color: #888; padding: 4px 10px; cursor: pointer; }
+  .fit-btn:hover { border-color: #b5451b; color: #b5451b; }
+
+  /* ── PAGE ── */
+  .page { width: 210mm; min-height: 297mm; background: #fffdf8; margin: 0 auto; padding: 14mm 12mm 10mm 14mm; display: flex; flex-direction: column; box-shadow: 0 2px 16px rgba(0,0,0,.12); }
+  .body { display: flex; gap: 8mm; flex: 1; }
+  .sheet { flex: 4; }
+  .diagrams { flex: 1; border-left: 1px solid #ddd; padding-left: 6mm; display: flex; flex-direction: column; gap: 10px; }
+
+  /* ── HEADER ── */
+  header { border-bottom: 2px solid #1a1a1a; padding-bottom: 5px; margin-bottom: 8px; }
+  h1 { font-family: 'Playfair Display', serif; font-size: 1.5em; line-height: 1.1; }
+  .artist { font-size: .72em; letter-spacing: .1em; color: #666; margin-top: 2px; }
+
+  /* ── SECTIONS ── */
+  .section { margin-bottom: 8px; }
+  .section-label { font-size: .65em; font-weight: 700; letter-spacing: .15em; text-transform: uppercase; color: #999; margin-bottom: 3px; }
+  .line { margin-bottom: 1px; }
+  .chords { display: block; font-size: var(--fs); font-weight: 700; color: #b5451b; white-space: pre; line-height: 1.2; margin-top: 2px; }
+  .lyrics { display: block; font-size: var(--fs); white-space: pre; line-height: 1.3; }
+  hr.divider { border: none; border-top: 1px dashed #ddd; margin: 6px 0; }
+
+  /* ── CHORD DIAGRAMS ── */
+  .diagrams-title { font-size: .6em; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: #999; border-bottom: 1px solid #ddd; padding-bottom: 3px; margin-bottom: 4px; }
+  .chord-box { text-align: center; }
+  .chord-box .chord-name { font-size: .82em; font-weight: 700; margin-bottom: 2px; }
+  .chord-box .frets { font-size: .58em; color: #999; margin-top: 1px; }
+
+  /* ── QR ── */
+  .links-footer { margin-top: 10px; padding-top: 8px; border-top: 1px dashed #ddd; display: flex; gap: 16px; align-items: flex-start; flex-wrap: wrap; }
+  .qr-block { display: flex; flex-direction: column; align-items: center; gap: 3px; }
+  .qr-block img { width: 52px; height: 52px; display: block; }
+  .qr-block span { font-size: .55em; color: #aaa; letter-spacing: .06em; text-transform: uppercase; }
+
+  footer { font-size: .58em; color: #bbb; text-align: center; border-top: 1px solid #eee; padding-top: 5px; margin-top: 8px; }
+
+  @media print {
+    body { background: white; padding: 0; }
+    .toolbar { display: none; }
+    .page {
+      box-shadow: none;
+      margin: 0;
+      width: 210mm;
+      min-height: 297mm;
+      padding: 14mm 12mm 10mm 14mm;
+    }
+  }
+</style>
+</head>
+<body>
+
+<div class="toolbar">
+  <a href="../index.html">← All songs</a>
+  <div class="toolbar-right">
+    <a class="pill pill-spotify" href="https://open.spotify.com/search/Bob%20Dylan%20Knockin%20On%20Heavens%20Door" target="_blank" rel="noreferrer">▶ Spotify</a>
+    <a class="pill pill-yt" href="https://music.youtube.com/search?q=Bob+Dylan+Knockin+On+Heavens+Door" target="_blank" rel="noreferrer">▶ YouTube Music</a>
+    <div class="font-controls">
+      <span>Aa</span>
+      <span id="fs-label" style="border-right:none">Default</span>
+      <button class="fc-btn" onclick="changeFontSize(-1)">−</button>
+      <button class="fc-btn" onclick="changeFontSize(1)">+</button>
+    </div>
+    <button class="fit-btn" onclick="fitA4()">Fit A4</button>
+  </div>
+</div>
+
+<div class="page" id="page">
+  <header>
+    <h1>Knockin' On Heaven's Door</h1>
+    <div class="artist">Bob Dylan · arr. for Ukulele</div>
+  </header>
+
+  <div class="body">
+    <div class="sheet">
+
+      <div class="section">
+        <div class="section-label">Intro</div>
+        <div class="line"><span class="chords">G    D    Am7</span></div>
+        <div class="line"><span class="lyrics">Oo, ooh–ooh</span></div>
+        <div class="line"><span class="chords">G    D    C</span></div>
+        <div class="line"><span class="lyrics">Oo, ooh–ooh</span></div>
+        <div class="line"><span class="chords">G    D    Am7</span></div>
+        <div class="line"><span class="lyrics">Oo, ooh–ooh</span></div>
+        <div class="line"><span class="chords">G    D    C</span></div>
+        <div class="line"><span class="lyrics">Oo, ooh–ooh</span></div>
+      </div>
+
+      <hr class="divider">
+
+      <div class="section">
+        <div class="section-label">Verse 1</div>
+        <div class="line">
+          <span class="chords">G         D                   Am7</span>
+          <span class="lyrics">Mama, take this badge off of me</span>
+        </div>
+        <div class="line">
+          <span class="chords">G         D          C</span>
+          <span class="lyrics">I can't use it anymore</span>
+        </div>
+        <div class="line">
+          <span class="chords">G              D                  Am7</span>
+          <span class="lyrics">It's getting dark too dark to see</span>
+        </div>
+        <div class="line">
+          <span class="chords">G         D                    C</span>
+          <span class="lyrics">Feel like I'm knocking on heaven's door</span>
+        </div>
+      </div>
+
+      <hr class="divider">
+
+      <div class="section">
+        <div class="section-label">Chorus</div>
+        <div class="line">
+          <span class="chords">G              D               Am7</span>
+          <span class="lyrics">Knock, knock, knockin' on heaven's door</span>
+        </div>
+        <div class="line">
+          <span class="chords">G              D            C</span>
+          <span class="lyrics">Knock, knock, knockin' on heaven's door</span>
+        </div>
+        <div class="line">
+          <span class="chords">G              D               Am7</span>
+          <span class="lyrics">Knock, knock, knockin' on heaven's door</span>
+        </div>
+        <div class="line">
+          <span class="chords">G              D            C</span>
+          <span class="lyrics">Knock, knock, knockin' on heaven's door</span>
+        </div>
+      </div>
+
+      <hr class="divider">
+
+      <div class="section">
+        <div class="section-label">Verse 2</div>
+        <div class="line">
+          <span class="chords">G         D               Am7</span>
+          <span class="lyrics">Mama, put my guns in the ground</span>
+        </div>
+        <div class="line">
+          <span class="chords">G         D       C</span>
+          <span class="lyrics">I can't shoot them anymore</span>
+        </div>
+        <div class="line">
+          <span class="chords">G              D                      Am7</span>
+          <span class="lyrics">That long black cloud is coming down</span>
+        </div>
+        <div class="line">
+          <span class="chords">G         D                   C</span>
+          <span class="lyrics">I feel I'm knocking on heaven's door</span>
+        </div>
+      </div>
+
+      <hr class="divider">
+
+      <div class="section">
+        <div class="section-label">Chorus (×2)</div>
+        <div class="line">
+          <span class="chords">G              D               Am7</span>
+          <span class="lyrics">Knock, knock, knockin' on heaven's door</span>
+        </div>
+        <div class="line">
+          <span class="chords">G              D            C</span>
+          <span class="lyrics">Knock, knock, knockin' on heaven's door</span>
+        </div>
+        <div class="line">
+          <span class="chords">G              D               Am7</span>
+          <span class="lyrics">Knock, knock, knockin' on heaven's door</span>
+        </div>
+        <div class="line">
+          <span class="chords">G              D            C</span>
+          <span class="lyrics">Knock, knock, knockin' on heaven's door</span>
+        </div>
+      </div>
+
+      <hr class="divider">
+
+      <div class="section">
+        <div class="section-label">Outro (quick fade)</div>
+        <div class="line"><span class="chords">G    D    Am7</span></div>
+        <div class="line"><span class="lyrics">Oo, ooh–ooh</span></div>
+        <div class="line"><span class="chords">G    D    C</span></div>
+        <div class="line"><span class="lyrics">Oo, ooh–ooh</span></div>
+      </div>
+
+    </div><!-- /sheet -->
+
+    <div class="diagrams">
+      <div class="diagrams-title">Chords · G C E A</div>
+
+      <!-- G: 0 2 3 2 -->
+      <div class="chord-box">
+        <div class="chord-name">G</div>
+        <svg width="52" height="62" viewBox="0 0 52 62">
+          <line x1="8" y1="10" x2="44" y2="10" stroke="#333" stroke-width="3"/>
+          <line x1="8"  y1="10" x2="8"  y2="58" stroke="#555" stroke-width="1"/>
+          <line x1="20" y1="10" x2="20" y2="58" stroke="#555" stroke-width="1"/>
+          <line x1="32" y1="10" x2="32" y2="58" stroke="#555" stroke-width="1"/>
+          <line x1="44" y1="10" x2="44" y2="58" stroke="#555" stroke-width="1"/>
+          <line x1="8" y1="22" x2="44" y2="22" stroke="#ccc" stroke-width="0.8"/>
+          <line x1="8" y1="34" x2="44" y2="34" stroke="#ccc" stroke-width="0.8"/>
+          <line x1="8" y1="46" x2="44" y2="46" stroke="#ccc" stroke-width="0.8"/>
+          <line x1="8" y1="58" x2="44" y2="58" stroke="#ccc" stroke-width="0.8"/>
+          <text x="8"  y="8" text-anchor="middle" font-size="5" fill="#999">G</text>
+          <text x="20" y="8" text-anchor="middle" font-size="5" fill="#999">C</text>
+          <text x="32" y="8" text-anchor="middle" font-size="5" fill="#999">E</text>
+          <text x="44" y="8" text-anchor="middle" font-size="5" fill="#999">A</text>
+          <text x="8"  y="7" text-anchor="middle" font-size="8" fill="#b5451b">o</text>
+          <circle cx="20" cy="28" r="4.5" fill="#b5451b"/>
+          <circle cx="32" cy="40" r="4.5" fill="#b5451b"/>
+          <circle cx="44" cy="28" r="4.5" fill="#b5451b"/>
+        </svg>
+        <div class="frets">0 2 3 2</div>
+      </div>
+
+      <!-- D: 2 2 2 0 -->
+      <div class="chord-box">
+        <div class="chord-name">D</div>
+        <svg width="52" height="62" viewBox="0 0 52 62">
+          <line x1="8" y1="10" x2="44" y2="10" stroke="#333" stroke-width="3"/>
+          <line x1="8"  y1="10" x2="8"  y2="58" stroke="#555" stroke-width="1"/>
+          <line x1="20" y1="10" x2="20" y2="58" stroke="#555" stroke-width="1"/>
+          <line x1="32" y1="10" x2="32" y2="58" stroke="#555" stroke-width="1"/>
+          <line x1="44" y1="10" x2="44" y2="58" stroke="#555" stroke-width="1"/>
+          <line x1="8" y1="22" x2="44" y2="22" stroke="#ccc" stroke-width="0.8"/>
+          <line x1="8" y1="34" x2="44" y2="34" stroke="#ccc" stroke-width="0.8"/>
+          <line x1="8" y1="46" x2="44" y2="46" stroke="#ccc" stroke-width="0.8"/>
+          <line x1="8" y1="58" x2="44" y2="58" stroke="#ccc" stroke-width="0.8"/>
+          <text x="8"  y="8" text-anchor="middle" font-size="5" fill="#999">G</text>
+          <text x="20" y="8" text-anchor="middle" font-size="5" fill="#999">C</text>
+          <text x="32" y="8" text-anchor="middle" font-size="5" fill="#999">E</text>
+          <text x="44" y="8" text-anchor="middle" font-size="5" fill="#999">A</text>
+          <circle cx="8"  cy="28" r="4.5" fill="#b5451b"/>
+          <circle cx="20" cy="28" r="4.5" fill="#b5451b"/>
+          <circle cx="32" cy="28" r="4.5" fill="#b5451b"/>
+          <text x="44" y="7" text-anchor="middle" font-size="8" fill="#b5451b">o</text>
+        </svg>
+        <div class="frets">2 2 2 0</div>
+      </div>
+
+      <!-- Am7: 0 0 0 0 -->
+      <div class="chord-box">
+        <div class="chord-name">Am7</div>
+        <svg width="52" height="62" viewBox="0 0 52 62">
+          <line x1="8" y1="10" x2="44" y2="10" stroke="#333" stroke-width="3"/>
+          <line x1="8"  y1="10" x2="8"  y2="58" stroke="#555" stroke-width="1"/>
+          <line x1="20" y1="10" x2="20" y2="58" stroke="#555" stroke-width="1"/>
+          <line x1="32" y1="10" x2="32" y2="58" stroke="#555" stroke-width="1"/>
+          <line x1="44" y1="10" x2="44" y2="58" stroke="#555" stroke-width="1"/>
+          <line x1="8" y1="22" x2="44" y2="22" stroke="#ccc" stroke-width="0.8"/>
+          <line x1="8" y1="34" x2="44" y2="34" stroke="#ccc" stroke-width="0.8"/>
+          <line x1="8" y1="46" x2="44" y2="46" stroke="#ccc" stroke-width="0.8"/>
+          <line x1="8" y1="58" x2="44" y2="58" stroke="#ccc" stroke-width="0.8"/>
+          <text x="8"  y="8" text-anchor="middle" font-size="5" fill="#999">G</text>
+          <text x="20" y="8" text-anchor="middle" font-size="5" fill="#999">C</text>
+          <text x="32" y="8" text-anchor="middle" font-size="5" fill="#999">E</text>
+          <text x="44" y="8" text-anchor="middle" font-size="5" fill="#999">A</text>
+          <text x="8"  y="7" text-anchor="middle" font-size="8" fill="#b5451b">o</text>
+          <text x="20" y="7" text-anchor="middle" font-size="8" fill="#b5451b">o</text>
+          <text x="32" y="7" text-anchor="middle" font-size="8" fill="#b5451b">o</text>
+          <text x="44" y="7" text-anchor="middle" font-size="8" fill="#b5451b">o</text>
+        </svg>
+        <div class="frets">0 0 0 0</div>
+      </div>
+
+      <!-- C: 0 0 0 3 -->
+      <div class="chord-box">
+        <div class="chord-name">C</div>
+        <svg width="52" height="62" viewBox="0 0 52 62">
+          <line x1="8" y1="10" x2="44" y2="10" stroke="#333" stroke-width="3"/>
+          <line x1="8"  y1="10" x2="8"  y2="58" stroke="#555" stroke-width="1"/>
+          <line x1="20" y1="10" x2="20" y2="58" stroke="#555" stroke-width="1"/>
+          <line x1="32" y1="10" x2="32" y2="58" stroke="#555" stroke-width="1"/>
+          <line x1="44" y1="10" x2="44" y2="58" stroke="#555" stroke-width="1"/>
+          <line x1="8" y1="22" x2="44" y2="22" stroke="#ccc" stroke-width="0.8"/>
+          <line x1="8" y1="34" x2="44" y2="34" stroke="#ccc" stroke-width="0.8"/>
+          <line x1="8" y1="46" x2="44" y2="46" stroke="#ccc" stroke-width="0.8"/>
+          <line x1="8" y1="58" x2="44" y2="58" stroke="#ccc" stroke-width="0.8"/>
+          <text x="8"  y="8" text-anchor="middle" font-size="5" fill="#999">G</text>
+          <text x="20" y="8" text-anchor="middle" font-size="5" fill="#999">C</text>
+          <text x="32" y="8" text-anchor="middle" font-size="5" fill="#999">E</text>
+          <text x="44" y="8" text-anchor="middle" font-size="5" fill="#999">A</text>
+          <text x="8"  y="7" text-anchor="middle" font-size="8" fill="#b5451b">o</text>
+          <text x="20" y="7" text-anchor="middle" font-size="8" fill="#b5451b">o</text>
+          <text x="32" y="7" text-anchor="middle" font-size="8" fill="#b5451b">o</text>
+          <circle cx="44" cy="40" r="4.5" fill="#b5451b"/>
+        </svg>
+        <div class="frets">0 0 0 3</div>
+      </div>
+
+      <div class="links-footer" style="margin-top:auto">
+        <div class="qr-block">
+          <img src="https://api.qrserver.com/v1/create-qr-code/?size=64x64&data=https%3A%2F%2Fopen.spotify.com%2Fsearch%2FBob%2520Dylan%2520Knockin%2520On%2520Heavens%2520Door" alt="Spotify QR">
+          <span>Spotify</span>
+        </div>
+        <div class="qr-block">
+          <img src="https://api.qrserver.com/v1/create-qr-code/?size=64x64&data=https%3A%2F%2Fmusic.youtube.com%2Fsearch%3Fq%3DBob%2BDylan%2BKnockin%2BOn%2BHeavens%2BDoor" alt="YouTube Music QR">
+          <span>YouTube Music</span>
+        </div>
+      </div>
+    </div><!-- /diagrams -->
+  </div><!-- /body -->
+
+  <footer>Ukulele · Standard G C E A tuning · For personal use</footer>
+</div>
+
+<script>
+  var currentFs = 14;
+  function changeFontSize(d) {
+    currentFs = Math.max(9, Math.min(18, currentFs + d));
+    document.documentElement.style.setProperty('--fs', currentFs + 'px');
+    document.getElementById('fs-label').textContent = currentFs + 'px';
+  }
+  function fitA4() {
+    var target = 297 * 3.7795;
+    while (currentFs > 9 && document.getElementById('page').scrollHeight > target) {
+      currentFs--;
+      document.documentElement.style.setProperty('--fs', currentFs + 'px');
+    }
+    document.getElementById('fs-label').textContent = currentFs + 'px';
+  }
+</script>
+</body>
+</html>
