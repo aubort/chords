@@ -230,8 +230,13 @@ hr.section-divider{border:none;border-top:1px dashed #ddd;margin:6px 0}
       <label>Personal Access Token</label>
       <input id="gh-token" type="password" placeholder="ghp_…">
     </div>
+    <div class="modal-field" style="margin-bottom:6px">
+      <label style="display:flex;align-items:center;gap:8px;cursor:pointer;text-transform:none;letter-spacing:0;font-size:.72em;color:#666">
+        <input type="checkbox" id="gh-remember"> Remember token on this device
+      </label>
+    </div>
     <div class="modal-note">
-      Pushes <strong>two files</strong>: the rendered HTML and its ChordTxt source under <strong>src/</strong> · token needs <strong>repo</strong> scope · only used for this push · never stored
+      Pushes <strong>two files</strong>: the rendered HTML and its ChordTxt source under <strong>src/</strong> · token needs <strong>repo</strong> scope · stored only in your browser's localStorage
     </div>
     <div class="modal-btns">
       <button class="btn btn-secondary" id="gh-cancel">Cancel</button>
@@ -652,7 +657,13 @@ async function ghPut(owner,repoName,path,content,token){
   return res.json();
 }
 
-document.getElementById("save-gh-btn").addEventListener("click",()=>{ document.getElementById("gh-status").style.display="none"; document.getElementById("gh-modal").classList.add("open"); });
+document.getElementById("save-gh-btn").addEventListener("click",()=>{
+  const savedToken=localStorage.getItem("gh_token"), savedRepo=localStorage.getItem("gh_repo");
+  if(savedRepo) document.getElementById("gh-repo").value=savedRepo;
+  if(savedToken){ document.getElementById("gh-token").value=savedToken; document.getElementById("gh-remember").checked=true; }
+  document.getElementById("gh-status").style.display="none";
+  document.getElementById("gh-modal").classList.add("open");
+});
 document.getElementById("gh-cancel").addEventListener("click",()=>document.getElementById("gh-modal").classList.remove("open"));
 document.getElementById("gh-modal").addEventListener("click",e=>{ if(e.target===document.getElementById("gh-modal"))document.getElementById("gh-modal").classList.remove("open"); });
 
@@ -669,6 +680,9 @@ document.getElementById("gh-push").addEventListener("click",async()=>{
     const txtRes=await ghPut(owner,repoName,txtPath,serializeChordTxt(song),token);
     const htmlRes=await ghPut(owner,repoName,htmlPath,exportHtml(song),token);
     const ghUrl="https://"+owner+".github.io/"+repoName+"/"+htmlPath;
+    localStorage.setItem("gh_repo",repo);
+    if(document.getElementById("gh-remember").checked) localStorage.setItem("gh_token",token);
+    else localStorage.removeItem("gh_token");
     statusEl.className="modal-status ok";
     statusEl.innerHTML='✓ Saved! <a href="'+(htmlRes.content?.html_url||"#")+'" target="_blank">HTML →</a> · <a href="'+(txtRes.content?.html_url||"#")+'" target="_blank">ChordTxt →</a><br><small>Pages: <a href="'+ghUrl+'" target="_blank">'+ghUrl+'</a></small>';
   }catch(e){statusEl.className="modal-status err";statusEl.textContent="✗ "+e.message;}

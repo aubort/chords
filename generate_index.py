@@ -87,6 +87,9 @@ h1{{font-family:'Playfair Display',serif;font-size:2em;color:#1a1a1a;margin-bott
 <div class="container">
   <h1>Chord Sheets</h1>
   <div class="subtitle">Ukulele arrangements</div>
+  <div style="margin-bottom:20px">
+    <a class="edit-btn" href="editor.html" style="font-size:.72em;padding:6px 14px">+ New Song</a>
+  </div>
   <div class="song-list">
 
 {cards_html}
