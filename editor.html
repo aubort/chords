@@ -804,7 +804,7 @@
 *{margin:0;padding:0;box-sizing:border-box}body{background:#fff;font-family:'Roboto Mono',monospace}
 .page{font-size:18px;width:210mm;min-height:297mm;background:#fff;margin:0 auto;padding:5mm;display:flex;flex-direction:column;position:relative}
 .page-break{position:absolute;left:0;right:0;height:1px;background:#d0c8c0;pointer-events:none}
-header{border-bottom:2px solid #1a1a1a;padding-bottom:3px;margin-bottom:5px}
+header{border-bottom:2px solid #1a1a1a;padding-bottom:3px;margin-bottom:5px;display:flex;justify-content:space-between;align-items:flex-start}
 h1{font-family:'Playfair Display',serif;font-size:1.2em;line-height:1.1}
 .artist{font-size:.67em;letter-spacing:.12em;text-transform:uppercase;color:#666;margin-top:1px}
 .body{display:flex;gap:6mm}
@@ -819,7 +819,7 @@ hr.d{border:none;border-top:1px dashed #e0e0e0;margin:3px 0}
 .diagrams-title{font-size:.60em;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#aaa;border-bottom:1px solid #ddd;padding-bottom:2px;margin-bottom:2px}
 .chord-box{text-align:center}.chord-box .chord-name{font-size:.76em;font-weight:700}
 .chord-box .frets{font-size:.54em;color:#aaa}
-.streaming{display:flex;flex-direction:column;gap:4px;padding:5px 0;margin-top:auto;border-top:1px solid #eee}
+.streaming{display:flex;flex-direction:column;gap:4px;align-items:flex-end}
 .streaming a{display:inline-flex;align-items:center;gap:4px;font-size:.58em;color:#555;text-decoration:none;padding:3px 8px;border-radius:20px;border:1px solid #ddd}
 .sp{color:#1db954!important;border-color:#1db954!important}
 .yt{color:#ff0000!important;border-color:#ff0000!important}
@@ -845,11 +845,11 @@ footer{font-size:.55em;color:#bbb;text-align:center;border-top:1px solid #eee;pa
   .streaming-qr .yt-label{color:#ff0000}
 }</style></head>
 <body><div class="page">
-<header><h1>{{TITLE}}</h1>
+<header><div><h1>{{TITLE}}</h1>
 <div class="artist">{{ARTIST}} · arr. for Ukulele</div>
-</header>
+</div>{{STREAMING}}</header>
 <div class="body"><div class="sheet">{{SHEET}}</div>
-<div class="diagrams">{{DIAGRAMS}}{{STREAMING}}</div>
+<div class="diagrams">{{DIAGRAMS}}</div>
 </div>
 <footer id="page-footer"></footer>
 </div>
