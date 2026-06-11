@@ -612,8 +612,8 @@ function metaToText(m) {
   const lines = [];
   if (m.title)   lines.push('title: ' + m.title);
   if (m.artist)  lines.push('artist: ' + m.artist);
-  if (m.spotify) lines.push('spotify: ' + m.spotify);
-  if (m.ytmusic) lines.push('ytmusic: ' + m.ytmusic);
+  lines.push('spotify: ' + (m.spotify || ''));
+  lines.push('ytmusic: ' + (m.ytmusic || ''));
   if (m.key)     lines.push('key: ' + m.key);
   return lines.join('\n');
 }
