@@ -450,13 +450,13 @@ const SHEET_TEMPLATE = `<!DOCTYPE html>
 <html lang="en"><head><meta charset="UTF-8"><title>{{TITLE}} – Ukulele</title>
 <style>@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto+Mono:wght@400;600&display=swap');
 *{margin:0;padding:0;box-sizing:border-box}body{background:#e8e4dc;font-family:'Roboto Mono',monospace;padding:12px}
-.page{font-size:15px;width:210mm;min-height:297mm;max-height:297mm;overflow:hidden;background:#fffdf8;margin:0 auto;padding:5mm 10mm 4mm 12mm;display:flex;flex-direction:column;box-shadow:0 2px 16px rgba(0,0,0,.12)}
+.page{font-size:15px;width:210mm;min-height:297mm;background-color:#fffdf8;background-image:repeating-linear-gradient(to bottom,transparent calc(297mm - 1px),#c4bdb5 calc(297mm - 1px),#c4bdb5 297mm,transparent 297mm);margin:0 auto;padding:5mm 10mm 4mm 12mm;display:flex;flex-direction:column;box-shadow:0 2px 16px rgba(0,0,0,.12)}
 header{border-bottom:2px solid #1a1a1a;padding-bottom:3px;margin-bottom:5px}
 h1{font-family:'Playfair Display',serif;font-size:1.2em;line-height:1.1}
 .artist{font-size:.67em;letter-spacing:.12em;text-transform:uppercase;color:#666;margin-top:1px}
-.body{display:flex;gap:6mm;flex:1;overflow:hidden}
-.sheet{flex:4;overflow:hidden}
-.diagrams{flex:1;border-left:1px solid #ddd;padding-left:4mm;display:flex;flex-direction:column;gap:5px;overflow:hidden}
+.body{display:flex;gap:6mm}
+.sheet{flex:4}
+.diagrams{flex:1;border-left:1px solid #ddd;padding-left:4mm;display:flex;flex-direction:column;gap:5px}
 .section{margin-bottom:4px}
 .section-label{font-size:.60em;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#aaa}
 .chords{display:block;white-space:pre;font-family:'Roboto Mono',monospace;font-size:.78em;font-weight:400;color:#aaa;line-height:1.1}
@@ -471,14 +471,15 @@ hr.d{border:none;border-top:1px dashed #e0e0e0;margin:3px 0}
 .sp{color:#1db954!important;border-color:#1db954!important}
 .yt{color:#ff0000!important;border-color:#ff0000!important}
 .streaming-qr{display:none}
-footer{font-size:.55em;color:#bbb;text-align:center;border-top:1px solid #eee;padding-top:4px;margin-top:4px}
+footer{font-size:.55em;color:#bbb;text-align:center;border-top:1px solid #eee;padding-top:4px;margin-top:auto}
 #font-ctrl{position:fixed;top:14px;left:50%;transform:translateX(-50%);background:#1a1a1a;border-radius:10px;display:flex;align-items:center;gap:6px;padding:6px 10px;z-index:999;box-shadow:0 4px 16px rgba(0,0,0,.3);font-family:'Roboto Mono',monospace;font-size:11px;color:#ccc}
 #font-ctrl button{background:#333;border:none;border-radius:6px;color:#fff;font-family:'Roboto Mono',monospace;font-size:11px;padding:4px 8px;cursor:pointer}
 #font-ctrl button.active{background:#b5451b}
 #font-size-label{min-width:30px;text-align:center;color:#aaa}
 @media print{
   body{background:white;padding:0}
-  .page{box-shadow:none;margin:0;width:100%;min-height:100vh;max-height:none;padding:5mm 10mm 4mm 12mm}
+  .page{box-shadow:none;margin:0;width:100%;min-height:0;padding:5mm 10mm 4mm 12mm;background-image:none}
+  .section{break-inside:avoid}
   #font-ctrl{display:none}
   .streaming a{display:none}
   .streaming-qr{display:flex;gap:10px;align-items:flex-end}
@@ -497,7 +498,7 @@ footer{font-size:.55em;color:#bbb;text-align:center;border-top:1px solid #eee;pa
 </div>
 <footer id="page-footer"></footer>
 </div>
-<div id="font-ctrl"><span>Aa</span><span style="color:#555">|</span><button id="btn-default" class="active" onclick="setSize(15,this)">Default</button><button onclick="fitToA4(this)">Fit A4</button><span style="color:#555">|</span><button onclick="nudge(-0.5)">−</button><span id="font-size-label">15px</span><button onclick="nudge(+0.5)">+</button><span style="color:#555">|</span><a id="edit-lnk" href="#" style="color:#9a9;font-size:11px;text-decoration:none;padding:4px 6px;background:#333;border-radius:6px">Edit</a></div><script>const page=document.querySelector(".page"),sheet=document.querySelector(".sheet"),label=document.getElementById("font-size-label"),btns=document.querySelectorAll("#font-ctrl button");function setActive(b){btns.forEach(x=>x.classList.remove("active"));if(b)b.classList.add("active");}function setSize(px,b){sheet.style.fontSize=px+"px";label.textContent=px.toFixed(1).replace(".0","")+"px";setActive(b);}function nudge(d){const cur=parseFloat(sheet.style.fontSize)||15;setSize(Math.max(7,cur+d),null);}function fitToA4(b){var a4px=page.clientHeight;var lo=7,hi=60,best=lo;for(var i=0;i<30;i++){var mid=Math.floor((lo+hi)/2);sheet.style.fontSize=mid+"px";page.style.maxHeight="none";page.style.overflow="visible";var natural=page.offsetHeight;page.style.maxHeight="297mm";page.style.overflow="hidden";if(natural<=a4px){best=mid;lo=mid+1;}else{hi=mid-1;}}setSize(best,b);}document.getElementById("page-footer").textContent=window.location.href;(function(){var loc=window.location.href.split("?")[0].split("#")[0];var m=loc.match(/https?:\/\/([^.]+)\.github\.io\/([^/]+)\/(.+)/);var editUrl;if(m){var raw="https://raw.githubusercontent.com/"+m[1]+"/"+m[2]+"/main/"+m[3];var depth=m[3].split("/").length-1;var base=depth>0?"../".repeat(depth):"./";editUrl=base+"editor.html?url="+encodeURIComponent(raw);}else{editUrl="editor.html?url="+encodeURIComponent(loc);}document.getElementById("edit-lnk").href=editUrl;})();<\/script>
+<div id="font-ctrl"><span>Aa</span><span style="color:#555">|</span><button id="btn-default" class="active" onclick="setSize(15,this)">Default</button><button onclick="fitToA4(this)">Fit A4</button><span style="color:#555">|</span><button onclick="nudge(-0.5)">−</button><span id="font-size-label">15px</span><button onclick="nudge(+0.5)">+</button><span style="color:#555">|</span><a id="edit-lnk" href="#" style="color:#9a9;font-size:11px;text-decoration:none;padding:4px 6px;background:#333;border-radius:6px">Edit</a></div><script>const page=document.querySelector(".page"),sheet=document.querySelector(".sheet"),label=document.getElementById("font-size-label"),btns=document.querySelectorAll("#font-ctrl button");function setActive(b){btns.forEach(x=>x.classList.remove("active"));if(b)b.classList.add("active");}function setSize(px,b){sheet.style.fontSize=px+"px";label.textContent=px.toFixed(1).replace(".0","")+"px";setActive(b);}function nudge(d){const cur=parseFloat(sheet.style.fontSize)||15;setSize(Math.max(7,cur+d),null);}function fitToA4(b){var ruler=document.createElement('div');ruler.style.cssText='position:fixed;height:297mm;width:0;visibility:hidden;';document.body.appendChild(ruler);var a4px=ruler.offsetHeight;document.body.removeChild(ruler);var lo=7,hi=60,best=lo;for(var i=0;i<30;i++){var mid=Math.floor((lo+hi)/2);sheet.style.fontSize=mid+"px";if(page.scrollHeight<=a4px){best=mid;lo=mid+1;}else{hi=mid-1;}}setSize(best,b);}document.getElementById("page-footer").textContent=window.location.href;(function(){var loc=window.location.href.split("?")[0].split("#")[0];var m=loc.match(/https?:\/\/([^.]+)\.github\.io\/([^/]+)\/(.+)/);var editUrl;if(m){var raw="https://raw.githubusercontent.com/"+m[1]+"/"+m[2]+"/main/"+m[3];var depth=m[3].split("/").length-1;var base=depth>0?"../".repeat(depth):"./";editUrl=base+"editor.html?url="+encodeURIComponent(raw);}else{editUrl="editor.html?url="+encodeURIComponent(loc);}document.getElementById("edit-lnk").href=editUrl;})();<\/script>
 </body></html>`;
 
 function applyTemplate(tmpl, vars) {
