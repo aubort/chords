@@ -830,11 +830,12 @@ footer{font-size:.55em;color:#bbb;text-align:center;border-top:1px solid #eee;pa
 #font-ctrl button.active{background:#b5451b}
 #font-size-label{min-width:30px;text-align:center;color:#aaa}
 @media print{
+  @page{margin:0}
   body{background:white;padding:0}
-  .page{box-shadow:none;margin:0;width:100%;min-height:0;padding:5mm}
+  .page{box-shadow:none;margin:0;width:100%;min-height:0;padding:5mm 5mm 14mm}
   .section{break-inside:avoid}
   #font-ctrl{display:none}
-  footer{display:none}
+  footer{position:fixed;bottom:0;left:0;right:0;padding:3mm 5mm;background:white;margin:0}
   .streaming a{display:none}
   .streaming-qr{display:flex;gap:10px;align-items:flex-end}
   .streaming-qr div{text-align:center}
