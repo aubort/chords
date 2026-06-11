@@ -157,20 +157,18 @@ function exportHtml(s) {
     return '<div class="chord-box"><div class="chord-name">'+esc(n)+'</div>'+d.svg+'<div class="frets">'+d.frets+'</div></div>';
   }).join("");
 
-  let streamingHtml = "";
-  if (m.spotify || m.ytmusic) {
-    const qr = u => "https://api.qrserver.com/v1/create-qr-code/?size=64x64&data=" + encodeURIComponent(u);
-    let pills = "", qrs = "";
-    if (m.spotify) {
-      pills += '<a href="'+escAttr(m.spotify)+'" class="sp" target="_blank">&#9654; Spotify</a>';
-      qrs += '<div><img src="'+escAttr(qr(m.spotify))+'" alt="Spotify QR"><span class="sp-label">Spotify</span></div>';
-    }
-    if (m.ytmusic) {
-      pills += '<a href="'+escAttr(m.ytmusic)+'" class="yt" target="_blank">&#9654; YouTube Music</a>';
-      qrs += '<div><img src="'+escAttr(qr(m.ytmusic))+'" alt="YouTube Music QR"><span class="yt-label">YouTube Music</span></div>';
-    }
-    streamingHtml = '<div class="streaming">'+pills+'<div class="streaming-qr">'+qrs+'</div></div>';
-  }
+  const query = encodeURIComponent((m.artist ? m.artist+' ' : '')+m.title);
+  const spUrl = m.spotify  || 'https://open.spotify.com/search/'+query;
+  const ytUrl = m.ytmusic  || 'https://music.youtube.com/search?q='+query;
+  const qr = u => "https://api.qrserver.com/v1/create-qr-code/?size=64x64&data="+encodeURIComponent(u);
+  const streamingHtml =
+    '<div class="streaming">'
+    +'<a href="'+escAttr(spUrl)+'" class="sp" target="_blank">&#9654; Spotify</a>'
+    +'<a href="'+escAttr(ytUrl)+'" class="yt" target="_blank">&#9654; YouTube Music</a>'
+    +'<div class="streaming-qr">'
+    +'<div><img src="'+escAttr(qr(spUrl))+'" alt="Spotify QR"><span class="sp-label">Spotify</span></div>'
+    +'<div><img src="'+escAttr(qr(ytUrl))+'" alt="YouTube Music QR"><span class="yt-label">YouTube Music</span></div>'
+    +'</div></div>';
 
   return applyTemplate(SHEET_TEMPLATE, {
     TITLE: esc(m.title),
