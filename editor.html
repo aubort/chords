@@ -71,6 +71,15 @@ textarea:focus{border-color:var(--accent)}
 .editor-toolbar .hint{font-size:.62em;letter-spacing:.06em;color:var(--muted);margin-top:2px}
 .toolbar-btns{display:flex;gap:8px;flex-shrink:0}
 
+/* Meta editor */
+#meta-editor{
+  width:100%;font-family:var(--font);font-size:.72em;
+  border:1px solid var(--border);border-radius:3px;padding:8px 10px;
+  resize:none;outline:none;background:#faf9f6;color:#444;
+  margin-bottom:8px;line-height:1.6;overflow:hidden;
+}
+#meta-editor:focus{border-color:var(--accent)}
+
 /* Song sheet */
 #song-sheet{
   background:var(--card);border-radius:4px;
@@ -198,6 +207,7 @@ hr.section-divider{border:none;border-top:1px dashed #ddd;margin:6px 0}
         <button class="btn btn-secondary" id="reset-btn">← Back</button>
       </div>
     </div>
+    <textarea id="meta-editor" spellcheck="false"></textarea>
     <div id="song-sheet"></div>
   </div>
 
@@ -597,6 +607,43 @@ document.addEventListener("keydown",e=>{
   if(e.key==="Escape")setSelected(null);
 });
 
+/* ── META EDITOR ── */
+function metaToText(m) {
+  const lines = [];
+  if (m.title)   lines.push('title: ' + m.title);
+  if (m.artist)  lines.push('artist: ' + m.artist);
+  if (m.spotify) lines.push('spotify: ' + m.spotify);
+  if (m.ytmusic) lines.push('ytmusic: ' + m.ytmusic);
+  if (m.key)     lines.push('key: ' + m.key);
+  return lines.join('\n');
+}
+
+function textToMeta(text) {
+  const meta = {};
+  for (const line of text.split('\n')) {
+    const m = line.match(/^([A-Za-z][A-Za-z0-9_-]*)\s*:\s*(.*)$/);
+    if (m) meta[m[1].toLowerCase()] = m[2].trim();
+  }
+  return meta;
+}
+
+function fitMetaEditor() {
+  const ta = document.getElementById('meta-editor');
+  ta.style.height = 'auto';
+  ta.style.height = ta.scrollHeight + 'px';
+}
+
+document.getElementById('meta-editor').addEventListener('input', () => {
+  const updated = textToMeta(document.getElementById('meta-editor').value);
+  Object.assign(song.meta, updated);
+  if (updated.title) {
+    document.getElementById('editor-song-title').textContent = updated.title;
+    const sl = slugify(updated.title);
+    if (sl) document.getElementById('gh-path').value = 'ukulele/' + sl + '.html';
+  }
+  fitMetaEditor();
+});
+
 /* ── LOAD ── */
 function loadInput(text) {
   const err = document.getElementById("paste-error");
@@ -612,8 +659,11 @@ function loadInput(text) {
   document.getElementById("editor-song-title").textContent = song.meta.title;
   const sl = slugify(song.meta.title);
   if (sl) document.getElementById("gh-path").value = "ukulele/"+sl+".html";
+  const ta = document.getElementById("meta-editor");
+  ta.value = metaToText(song.meta);
   document.getElementById("paste-screen").style.display="none";
   document.getElementById("editor-screen").style.display="block";
+  fitMetaEditor();
   render(); return true;
 }
 
@@ -633,6 +683,7 @@ document.getElementById("url-btn").addEventListener("click",async()=>{
 document.getElementById("reset-btn").addEventListener("click",()=>{
   song=null;selected=null;
   document.getElementById("html-input").value="";
+  document.getElementById("meta-editor").value="";
   document.getElementById("paste-error").style.display="none";
   document.getElementById("editor-screen").style.display="none";
   document.getElementById("paste-screen").style.display="block";
