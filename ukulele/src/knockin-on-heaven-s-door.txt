@@ -1,5 +1,7 @@
 title: Knockin' On Heaven's Door
 artist: Bob Dylan
+spotify: https://open.spotify.com/search/Bob%20Dylan%20Knockin'%20On%20Heaven's%20Door
+ytmusic: https://music.youtube.com/watch?v=z4R5crZylQ0&si=OI-jBOVPX6hR-ozC
 
 [Intro]
 G    D    Am7
