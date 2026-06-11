@@ -132,7 +132,9 @@ function diagramSvg(name) {
 const editorSrc = fs.readFileSync(path.join(__dirname, 'editor.html'), 'utf8');
 const tmplMatch = editorSrc.match(/const SHEET_TEMPLATE = `([\s\S]*?)`;[\s\n]*function applyTemplate/);
 if (!tmplMatch) { console.error('Could not extract SHEET_TEMPLATE from editor.html'); process.exit(1); }
-const SHEET_TEMPLATE = tmplMatch[1];
+// The template uses <\/script> to avoid closing the outer <script> tag in editor.html;
+// unescape it for standalone output files.
+const SHEET_TEMPLATE = tmplMatch[1].replace('<\\/script>', '</script>');
 
 function applyTemplate(tmpl, vars) {
   return tmpl.replace(/\{\{(\w+)\}\}/g, (_, k) => k in vars ? vars[k] : '');
