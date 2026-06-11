@@ -3,30 +3,15 @@
 const fs = require('fs');
 const path = require('path');
 
+// Read editor.html once — all shared data (chords, template) is extracted from it.
+const editorSrc = fs.readFileSync(path.join(__dirname, 'editor.html'), 'utf8');
+
 const CHORD_RE = /^[A-G][#b]?(m|maj|min|dim|aug|sus|add)?[0-9]*(\/[A-G][#b]?)?$/;
 const BAR_RE = /^(\||x\d+|%|N\.C\.)$/i;
 
-const UKE_CHORDS = {
-  "A":[2,1,0,0],"A#":[3,2,1,1],"Bb":[3,2,1,1],"B":[4,3,2,2],"C":[0,0,0,3],
-  "C#":[1,1,1,4],"Db":[1,1,1,4],"D":[2,2,2,0],"D#":[0,3,3,1],"Eb":[0,3,3,1],
-  "E":[4,4,4,2],"F":[2,0,1,0],"F#":[3,1,2,1],"Gb":[3,1,2,1],"G":[0,2,3,2],
-  "G#":[5,3,4,3],"Ab":[5,3,4,3],
-  "Am":[2,0,0,0],"A#m":[3,1,1,1],"Bbm":[3,1,1,1],"Bm":[4,2,2,2],"Cm":[0,3,3,3],
-  "C#m":[1,1,0,4],"Dbm":[1,1,0,4],"Dm":[2,2,1,0],"D#m":[3,3,2,1],"Ebm":[3,3,2,1],
-  "Em":[0,4,3,2],"Fm":[1,0,1,3],"F#m":[2,1,2,0],"Gbm":[2,1,2,0],"Gm":[0,2,3,1],
-  "G#m":[1,3,4,2],"Abm":[1,3,4,2],
-  "A7":[0,1,0,0],"A#7":[1,2,1,1],"Bb7":[1,2,1,1],"B7":[2,3,2,2],"C7":[0,0,0,1],
-  "C#7":[1,1,1,2],"Db7":[1,1,1,2],"D7":[2,2,2,3],"D#7":[3,3,3,4],"Eb7":[3,3,3,4],
-  "E7":[1,2,0,2],"F7":[2,3,1,3],"F#7":[3,4,2,4],"Gb7":[3,4,2,4],"G7":[0,2,1,2],
-  "G#7":[1,3,2,3],"Ab7":[1,3,2,3],
-  "Am7":[0,0,0,0],"Bm7":[2,2,2,2],"Cm7":[3,3,3,3],"C#m7":[4,4,4,4],"Dm7":[2,2,1,3],
-  "Em7":[0,2,0,2],"Fm7":[1,3,1,3],"F#m7":[2,4,2,4],"Gm7":[0,2,1,1],"G#m7":[1,3,2,2],
-  "Amaj7":[1,1,0,0],"Bbmaj7":[3,2,1,0],"Cmaj7":[0,0,0,2],"Dmaj7":[2,2,2,4],
-  "Emaj7":[1,3,0,2],"Fmaj7":[2,4,1,3],"Gmaj7":[0,2,2,2],
-  "Asus4":[2,2,0,0],"Csus4":[0,0,1,3],"Dsus4":[0,2,3,0],"Gsus4":[0,2,3,3],
-  "Dsus2":[2,2,0,0],"Gsus2":[0,2,3,0],
-  "Cadd9":[0,2,0,3],"Fadd9":[2,0,3,0],"C6":[0,0,0,0]
-};
+const ukeMatch = editorSrc.match(/const UKE_CHORDS = (\{[\s\S]*?\});/);
+if (!ukeMatch) { console.error('Could not extract UKE_CHORDS from editor.html'); process.exit(1); }
+const UKE_CHORDS = eval('(' + ukeMatch[1] + ')');
 
 function esc(s){return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");}
 function escAttr(s){return esc(s).replace(/"/g,"&quot;");}
@@ -128,8 +113,6 @@ function diagramSvg(name) {
   return { svg:s, frets: frets ? frets.join(" ") : "?" };
 }
 
-// Read SHEET_TEMPLATE from editor.html
-const editorSrc = fs.readFileSync(path.join(__dirname, 'editor.html'), 'utf8');
 const tmplMatch = editorSrc.match(/const SHEET_TEMPLATE = `([\s\S]*?)`;[\s\n]*function applyTemplate/);
 if (!tmplMatch) { console.error('Could not extract SHEET_TEMPLATE from editor.html'); process.exit(1); }
 // The template uses <\/script> to avoid closing the outer <script> tag in editor.html;
