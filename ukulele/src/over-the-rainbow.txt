@@ -48,7 +48,7 @@ That's where ... you'll fi-ind me
 Oh, somewhere over the rainbow
 F         C
   Blue birds fly
-F         C
+F       C
 And the dream that you dare to
    G                Am       F
 Oh why, oh why can't I-I-I ... Ah-ah-ay
@@ -58,7 +58,7 @@ Oh why, oh why can't I-I-I ... Ah-ah-ay
 Someday I'll wish upon a star
 G                                  Am       F
 Wake up where the clouds are far behind ... me-e-e
-    C
+      C
 Where trouble melts like lemon drops
 G
 High above the chimney tops
@@ -70,9 +70,9 @@ That's where ... you'll fi-ind me
 Oh, somewhere over the rainbow
 F         C
   Way up high
-F                           C
+F       C
 And the dreams that you dare to
-G                Am      F
+     G           Am      F
 Why, oh why can't I-I-I ... Ah-ah-ay
 
 [Outro (fade out)]
