@@ -2,74 +2,73 @@ title: With Or Without You
 artist: U2
 spotify: https://open.spotify.com/search/U2%20With%20Or%20Without%20You
 ytmusic: https://music.youtube.com/search?q=U2+With+Or+Without+You
-key: D
 
 [Intro]
 D  A  Bm  G  (×2)
 
 [Verse 1]
-D                A                          Bm
+D       A                  Bm
 See the stone set in your eyes
-                G                          D
+         G                  D
 See the thorn twist in your side
-            A         Bm   G
+            A     Bm       G
 And I'll wait for you
-D                A                          Bm
+D          A                 Bm
 Sleight of hand and twist of fate
-                G                          D
+             G                  D
 On a bed of nails, she makes me wait
-            A         Bm   G
+         A         Bm      G
 And I'll wait, without you--
-              D       A             Bm   G
+             D   A               Bm    G
 With or without you, with or without you
 
 [Verse 2]
-D                A                          Bm
+D             A                 Bm
 Through the storm we reach the shore
-                G                D
+            G               D
 You give it all but I want more
-            A         Bm   G
+            A      Bm    G
 And I'll wait for you
 
 [Bridge]
-                D                  A                      Bm                G
+          D             A            Bm            G
 And you give yourself away, and you give yourself away
-            D                A
+          D             A
 And you give, And you give,
-            Bm              G
+         Bm             G
 And you give yourself away
 
 [Chorus]
-              D       A             Bm        G
+             D     A         Bm           G
 With or without you, with or without you I--
-              D    A                    Bm   G
+        D   A              Bm    G
 I can't live-- with or without you
 
 [Instrumental]
 D  A  Bm  G
 
 [Verse 3]
-D                A
+D              A
 My hands are tied,
-Bm              G                              D
+Bm           G                  D
 my body bruised, she's got me with
-            A             Bm                  G
+            A       Bm               G
 nothing to win, and nothing left to lose
 
 [Bridge]
-            D                A
+         D             A
 And you give yourself away
-            Bm              G
+         Bm            G
 And you give yourself away
-            D                A
+         D             A
 And you give, And you give,
-            Bm              G
+         Bm            G
 And you give yourself away
 
 [Chorus]
-              D       A
+            D       A
 With or without you,
-              Bm              G
+         Bm           G
 With or without you I--
               D    A                    Bm   G    D.
 I can't live-- with or without you.
