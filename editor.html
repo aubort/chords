@@ -827,7 +827,7 @@ hr.d{border:none;border-top:1px dashed #e0e0e0;margin:3px 0}
 .qr-block{display:none;flex-direction:column;gap:5px;margin-top:auto;padding-top:4px;border-top:1px solid #ddd}
 .qr-block img{width:100%;max-width:28mm;height:auto;display:block;margin:0 auto}
 .qr-block span{font-size:.5em;text-align:center;display:block;margin-top:1px}
-footer{font-size:.55em;color:#bbb;text-align:center;border-top:1px solid #eee;padding-top:4px;margin-top:auto}
+footer{font-size:.55em;color:#bbb;text-align:center;border-top:1px solid #eee;padding-top:0px;margin-top:auto}
 #font-ctrl{position:fixed;top:14px;left:50%;transform:translateX(-50%);background:#1a1a1a;border-radius:10px;display:flex;align-items:center;gap:6px;padding:6px 10px;z-index:999;box-shadow:0 4px 16px rgba(0,0,0,.3);font-family:'Roboto Mono',monospace;font-size:11px;color:#ccc}
 #font-ctrl button{background:#333;border:none;border-radius:6px;color:#fff;font-family:'Roboto Mono',monospace;font-size:11px;padding:4px 8px;cursor:pointer}
 #font-ctrl button.active{background:#b5451b}
@@ -835,10 +835,10 @@ footer{font-size:.55em;color:#bbb;text-align:center;border-top:1px solid #eee;pa
 @media print{
   @page{margin:0}
   body{background:white;padding:0}
-  .page{box-shadow:none;margin:0;width:100%;min-height:0;padding:5mm 5mm 14mm}
+  .page{box-shadow:none;margin:0;width:100%;min-height:0;padding:5mm 5mm 19mm}
   .section{break-inside:avoid}
   #font-ctrl{display:none}
-  footer{position:fixed;bottom:0;left:0;right:0;padding:3mm 5mm;background:white;margin:0}
+  footer{position:fixed;bottom:0;left:0;right:0;padding:2mm 5mm;padding-top:0px;background:white;margin:0}
   .streaming a{display:none}
   .qr-block{display:flex;position:fixed;bottom:10mm;right:5mm;width:28mm}
   .qr-block .sp-label{color:#1db954}
