@@ -2,7 +2,6 @@ title: Ho Hey
 artist: The Lumineers
 spotify: https://open.spotify.com/search/The%20Lumineers%20Ho%20Hey
 ytmusic: https://music.youtube.com/watch?v=SuZytYa71lk&si=B3vzV4mehxjvLPux
-key: C
 
 [Intro]
 C                    F  C
