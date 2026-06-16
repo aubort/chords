@@ -1,8 +1,7 @@
 title: Hallelujah
 artist: Leonard Cohen
 spotify: https://open.spotify.com/search/Leonard%20Cohen%20Hallelujah
-ytmusic: https://music.youtube.com/search?q=Leonard+Cohen+Hallelujah
-key: C
+ytmusic: https://music.youtube.com/watch?v=-DxrGu9n4fg&si=aSqcOpXNyOGltj6b
 
 [Intro]
 C Am C Am
@@ -12,13 +11,13 @@ C Am C Am
 I heard there was a secret chord
      C                    Am
 That David played and it pleased the Lord
-    F              G             C    G
+    F              G             C          G
 But you don't really care for music, do you?
         C                  F          G
 Well it goes like this the fourth, the fifth
     Am                F
 The minor fall and the major lift
-    G                E7           Am
+    G            E7             Am
 The baffled king composing hallelujah
 
 [Chorus]
@@ -26,17 +25,17 @@ The baffled king composing hallelujah
 Hallelujah, hallelujah, hallelujah, hallelu-u-u-u-jah...
 
 [Verse 2]
-        C                      Am
+          C                       Am
 Well your faith was strong but you needed proof
     C                Am
 You saw her bathing on the roof
-    F                G               C       G
+    F              G             C           G
 Her beauty and the moonlight overthrew you
-C                    F    G
+C                    F      G
 She tied you to her kitchen chair
     Am                        F
 She broke your throne and she cut your hair
-    G                E7             Am
+    G                  E7           Am
 And from your lips she drew the hallelujah
 
 [Chorus]
@@ -44,13 +43,13 @@ And from your lips she drew the hallelujah
 Hallelujah, hallelujah, hallelujah, hallelu-u-u-u-jah...
 
 [Verse 3]
-C             Am
+C              Am
 Baby I've been here before
-    C                           Am
+      C                      Am
 I've seen this room and I've walked this floor
     F          G              C       G
 I used to live alone before I knew you
-C                        F    G
+C                          F      G
 I've seen your flag on the marble arch
     Am                    F
 But love is not a victory march
@@ -62,17 +61,17 @@ It's a cold and it's a broken hallelujah
 Hallelujah, hallelujah, hallelujah, hallelu-u-u-u-jah...
 
 [Verse 4]
-        C                              Am
+      C                         Am
 Well, there was a time when you let me know
-        C              Am
+        C           Am
 What's really going on below
     F              G               C       G
 But now you never show that to me, do you
-        C                F    G
+     C              F         G
 But remember when I moved in you
-        Am                  F
+       Am              F
 And the holy dove was moving too
-    G                  E7        Am
+    G               E7           Am
 And every breath we drew was hallelujah
 
 [Chorus]
@@ -80,15 +79,15 @@ And every breath we drew was hallelujah
 Hallelujah, hallelujah, hallelujah, halelu-u-u-u-jah-..
 
 [Verse 5]
-        C                Am
+      C              Am
 Well, maybe there's a God above
-    C                    Am
+    C             Am
 But all I've ever learned from love
     F              G              C       G
 Was how to shoot somebody who outdrew you
-        C                    F       G
+     C                 F        G
 It's not a cry that you hear at night
-    Am                         F
+    Am                 F
 It's not somebody who's seen the light
         G              E7           Am
 It's a cold and it's a broken hallelujah
